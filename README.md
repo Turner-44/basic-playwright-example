@@ -1,5 +1,7 @@
 # basic-playwright-example
 
+THIS IS A WORK IN PROGRESS.
+
 A basic repo to display my ability to test web page attributes using Playwright.
 
 ## SETUP:
