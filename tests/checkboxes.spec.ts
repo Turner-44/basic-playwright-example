@@ -1,12 +1,14 @@
 import { test, expect } from "@playwright/test";
 import { pageNames } from "../support/page-names";
+import { HomePage } from "../pages/home";
+import { SharedPage } from "../pages/shared";
 
 test("Toggle checkbox on and off", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("heading", { name: "Available Examples" }).isVisible();
-  await page.getByRole("link", { name: pageNames.checkboxes }).click();
+  const homePage = new HomePage(page);
+  await homePage.navigateTo();
 
-  await page.getByRole("heading", { name: pageNames.checkboxes }).isVisible();
+  const sharedPage = new SharedPage(page);
+  await sharedPage.navigateTo(pageNames.checkboxes);
 
   // Ensure there are only 2 checkboxes
   await expect(page.getByRole("checkbox")).toHaveCount(2);
